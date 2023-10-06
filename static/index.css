@@ -1,0 +1,39 @@
+/* Credit to Silvia O'Dwyer at CSS Tricks */
+@keyframes pulsate-pink {
+  100% {
+    /* Larger blur radius */
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
+      0 0 40px rgb(225, 0, 255), 0 0 80px rgb(225, 0, 255),
+      0 0 90px rgb(225, 0, 255), 0 0 100px rgb(225, 0, 255),
+      0 0 150px rgb(225, 0, 255);
+  }
+  0% {
+    /* Smaller blur radius */
+    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff,
+      0 0 10px rgb(225, 0, 255), 0 0 45px rgb(225, 0, 255),
+      0 0 55px rgb(225, 0, 255), 0 0 70px rgb(225, 0, 255),
+      0 0 80px rgb(225, 0, 255);
+  }
+}
+
+#🏷️ {
+  font-size: 3em;
+  font-family: "Pixelify Sans", cursive;
+}
+
+#🏷️:hover {
+  animation: pulsate-pink 2.5s infinite alternate;
+}
+
+main {
+  position: relative;
+}
+
+#📷 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 12em;
+  height: 16em;
+  border-radius: 30px;
+}

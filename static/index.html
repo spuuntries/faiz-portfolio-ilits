@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Scripts -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"
+      integrity="sha384-pjx/ohA+FGGT1DkH8NeTscW3x2H82LwvD4gfQIvtJ8JY5UjIdU82eel4/J5pCj8D"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"
+      integrity="sha384-cMrTlShXEGSdSFA359p+3aVUxK/R+0TAfbRZMcTlAn8yqzxEDj05QsS65nTFMMj4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"
+      integrity="sha384-fXdIufVbE9aU7STmdk/DWK0imNOozId9fTwzM/gi0NfPjphEIC3gq0M760UnsKVy"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+      rel="stylesheet"
+      integrity="sha384-JnI9fsy7u0hXe2CXur8V8MkHfeqi2q7x6KYi4DbEYIjZJuP2Z2eMlp2RbdO7p3zL"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Pixelify+Sans&family=Raleway:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./index.css" />
+
+    <title>Faiz Kautsar - Portfolio</title>
+  </head>
+  <body>
+    <nav class="container-fluid">
+      <ul>
+        <li>
+          <div id="🏷️"><p>Faiz Kautsar</p></div>
+        </li>
+      </ul>
+      <ul></ul>
+      <ul></ul>
+    </nav>
+
+    <main class="container">
+      <img id="📷" src="./foto.webp" alt="My face, w/o glasses" />
+    </main>
+
+    <script>
+      const tag = document.getElementById("🏷️");
+      tag.addEventListener("mouseenter", () => {
+        anime({
+          targets: tag,
+          scale: 1.25,
+          translateX: 10,
+        });
+      });
+      tag.addEventListener("mouseleave", () => {
+        anime({ targets: tag, scale: 1, translateX: 1 });
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        anime({ targets: "#📷", opacity: [0, 1], translateX: [100, 1] });
+      });
+    </script>
+  </body>
+</html>
