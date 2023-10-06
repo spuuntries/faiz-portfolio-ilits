@@ -46,8 +46,29 @@
       <ul></ul>
       <ul>
         <li>
-          <div id="🏷️"><p style="margin-bottom: 0">Faiz Kautsar</p></div>
-          <div id="contacts">abcd</div>
+          <div id="🏷️">
+            <p style="margin-bottom: 0; font-size: max(2em, 2.5vw)">
+              Faiz Kautsar
+            </p>
+          </div>
+          <div id="contacts">
+            <a href="https://github.com/spuuntries"
+              ><img
+                src="https://asset.brandfetch.io/idZAyF9rlg/idd6TtF-kc.png"
+                alt="github"
+            /></a>
+            <a href="https://www.linkedin.com/in/faiz-kautsar-6b6222249/"
+              ><img
+                src="https://asset.brandfetch.io/idJFz6sAsl/idO-lr4BCK.jpeg"
+                alt="linkedin"
+              />
+            </a>
+            <a href="https://discordapp.com/users/449941778750111764"
+              ><img
+                src="https://asset.brandfetch.io/idM8Hlme1a/idHdpdABAN.svg"
+                alt="discord"
+            /></a>
+          </div>
         </li>
       </ul>
       <ul></ul>
@@ -76,13 +97,34 @@
 
     <script>
       let array = [
-        { header: "Header 1", caption: "Caption 1" },
-        { header: "Header 2", caption: "Caption 2" },
-        { header: "Header 3", caption: "Caption 3" },
-        { header: "Header 4", caption: "Caption 4" },
-        { header: "Header 5", caption: "Caption 5" },
-        { header: "Header 6", caption: "Caption 6" },
-        // more objects...
+        {
+          header: "Kekbot",
+          caption: "A Discord Utility Bot I made in Discord.js for Art Union.",
+          tech: ["RESTful APIs", "node.js"],
+          img: "",
+          url: "https://github.com/thisisartunion/kekbot",
+        },
+        {
+          header: "Kekbot DISBOARD",
+          caption: "Kekbot DISBOARD bumping reminder, with a status page.",
+          tech: ["socket.io", "node.js"],
+          img: "",
+          url: "https://github.com/spuuntries/disbomp",
+        },
+        {
+          header: "Reminate",
+          caption: "A node.js package to work with Illuminarty.",
+          tech: ["", "node.js"],
+          img: "",
+          url: "https://github.com/spuuntries/reminate",
+        },
+        {
+          header: "Art Union",
+          caption: "A Discord server I started circa. 2020 with 2.3k members.",
+          tech: ["RESTful APIs"],
+          img: "",
+          url: "https://discord.thisisartunion.com",
+        },
       ];
 
       function getContrast(hexColor) {
@@ -129,7 +171,7 @@
         return "rgba(" + +r + "," + +g + "," + +b + "," + 1 + ")";
       }
 
-      function createWork(title, desc) {
+      function createWork(title, desc, tech, img) {
         let newElement = document.createElement("div");
         newElement.classList.add("worksquare");
 
@@ -150,20 +192,40 @@
         let bghex = generateHex();
         newElement.style.backgroundColor = hexToRgb(bghex);
 
-        newElement.style.padding = "10px";
+        newElement.style.padding = "1em";
 
         let header = document.createElement("h2");
+        let image = document.createElement("img");
+        let techno = document.createElement("p");
         let caption = document.createElement("p");
 
-        header.textContent = title;
-        header.style.color = getContrast(bghex);
+        if (title.split(" ").length > 1) {
+          title = title.split(" ").join("<br />");
+        }
+
+        let contrastCol = getContrast(bghex);
+        header.innerHTML = title;
+        techno.innerHTML = "<b>Tech: </b>" + tech;
         caption.textContent = desc;
-        caption.style.color = getContrast(bghex);
+        image.src = img;
+
+        header.style.margin = 0;
+        header.style.paddingRight = "1em";
+
+        header.style.color = contrastCol;
+        header.style.display = "inline-block";
+        header.style.fontFamily = '"Pixelify Sans", cursive';
+        techno.style.color = contrastCol;
+        caption.style.color = contrastCol;
 
         caption.className = "wrapped";
+        image.className = "workimg";
 
         newElement.appendChild(header);
+        newElement.appendChild(image);
+        newElement.appendChild(techno);
         newElement.appendChild(caption);
+
         newElement.style.position = "relative";
         newElement.style.zIndex = 0;
 
@@ -189,10 +251,12 @@
             duration: 100,
             easing: "linear",
           });
+
           anime({
             targets: newElement,
             scale: 2,
             easing: "easeOutElastic(1, 1)",
+            duration: "250ms",
           });
 
           let bloor = { b: 0 };
@@ -247,6 +311,7 @@
             targets: newElement,
             scale: 1,
             easing: "easeOutElastic(1, 1)",
+            duration: "250ms",
           });
 
           caption.className = "wrapped";
@@ -279,7 +344,7 @@
               "A 2D Illustrator",
               "A Video Production<br>Technician",
             ],
-            typeSpeed: 30,
+            typeSpeed: 20,
             loop: true,
             onLastStringBackspaced: () => {
               if (!trackDone) {
@@ -287,7 +352,13 @@
                 array.forEach((w) => {
                   document
                     .getElementById("works")
-                    .appendChild(createWork(w.header, w.caption));
+                    .appendChild(
+                      createWork(
+                        w.header,
+                        w.caption,
+                        w.tech.filter((s) => s.length).join(", ")
+                      )
+                    );
                 });
                 anime({
                   targets: ".worksquare",

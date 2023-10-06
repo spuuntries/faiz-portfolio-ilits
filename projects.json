@@ -1,16 +1,32 @@
 {
-  "projects": {
-    "kekbot": {
-      "title": "Kekbot",
-      "caption": "A Discord Utility Bot I made in Discord.js for a Discord server I started circa. 2020 with 2.5k members.",
+  "projects": [
+    {
+      "header": "Kekbot",
+      "caption": "A Discord Utility Bot I made in Discord.js for Art Union.",
       "tech": ["RESTful APIs", "node.js"],
-      "repo": "https://github.com/thisisartunion/kekbot"
+      "img": "",
+      "url": "https://github.com/thisisartunion/kekbot"
     },
-    "disboard-reminder": {
-      "title": "Kekbot DISBOARD",
+    {
+      "header": "Kekbot DISBOARD",
       "caption": "Kekbot DISBOARD bumping reminder, with a status page.",
       "tech": ["socket.io", "node.js"],
-      "repo": "https://github.com/spuuntries/disbomp"
+      "img": "",
+      "url": "https://github.com/spuuntries/disbomp"
+    },
+    {
+      "header": "Reminate",
+      "caption": "A node.js package to work with Illuminarty.",
+      "tech": ["", "node.js"],
+      "img": "",
+      "url": "https://github.com/spuuntries/reminate"
+    },
+    {
+      "header": "Art Union",
+      "caption": "A Discord server I started circa. 2020 with 2.3k members.",
+      "tech": ["RESTful APIs"],
+      "img": "",
+      "url": "https://discord.thisisartunion.com"
     }
-  }
+  ]
 }

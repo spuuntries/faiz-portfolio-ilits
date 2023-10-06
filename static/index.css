@@ -22,7 +22,7 @@
 }
 
 #🏷️ {
-  font-size: 10em;
+  font-weight: bold;
   font-family: "Pixelify Sans", cursive;
 }
 
@@ -37,6 +37,7 @@
 main {
   position: relative;
   padding-top: 0;
+  padding-bottom: 2em;
 }
 
 #biodata {
@@ -93,6 +94,11 @@ main {
   display: inline-block;
   opacity: 0;
   text-align: left;
+  width: 12em;
+  height: 10em;
+  overflow: scroll;
+  font-size: clamp(5px, 5vw, 20px);
+  font-family: "Raleway", sans-serif;
 }
 
 .worksquare > p.wrapped {
@@ -102,9 +108,9 @@ main {
   max-width: 100%;
 }
 
-.worksquare > p {
-  overflow: scroll;
-  white-space: normal;
+.workimg {
+  width: 1em;
+  display: inline-block;
 }
 
 .section {
@@ -113,4 +119,19 @@ main {
 
 #contacts {
   text-align: center;
+}
+
+#contacts > a {
+  display: inline-block;
+  padding-right: 1em;
+}
+
+#contacts > a > img {
+  width: max(20px, 2vw);
+  border-radius: 0.5vw;
+  transition: width 0.25s ease-in-out;
+}
+
+#contacts > a > img:hover {
+  width: max(25px, 2.5vw);
 }
