@@ -93,7 +93,7 @@
           <p id="workshead">
             My previous works: <br />
             <span style="opacity: 0.8; font-size: clamp(5px, 5vw, 15px)"
-              >Tap or hover over them!</span
+              >Tap or hover to expand them!</span
             >
           </p>
         </div>
@@ -232,7 +232,7 @@
 
           anime({
             targets: newElement,
-            scale: 2,
+            scale: 1.5,
             easing: "easeOutElastic(1, 1)",
             duration: "250ms",
           });
@@ -321,7 +321,7 @@
               "A 2D Illustrator",
               "A Video Production<br>Technician",
             ],
-            typeSpeed: 20,
+            typeSpeed: 10,
             loop: true,
             onLastStringBackspaced: async () => {
               if (trackDone) {

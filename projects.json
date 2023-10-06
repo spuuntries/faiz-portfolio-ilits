@@ -10,7 +10,7 @@
     {
       "header": "Kekbot DISBOARD",
       "caption": "Kekbot DISBOARD bumping reminder, with a status page.",
-      "tech": ["socket.io", "node.js"],
+      "tech": ["socket.io", "node.js", "express.js"],
       "img": "/assets/logo-kekbot.webp",
       "url": "https://github.com/spuuntries/disbomp"
     },
@@ -34,6 +34,20 @@
       "tech": ["RESTful APIs"],
       "img": "/assets/logo-au.webp",
       "url": "https://discord.thisisartunion.com"
+    },
+    {
+      "header": "Portfolio",
+      "caption": "The thing you're looking at right now, my portfolio.",
+      "tech": ["REST API", "anime.js", "Typed.js", "pico.css", "express.js"],
+      "img": "/foto.webp",
+      "url": "https://github.com/spuuntries/faiz-portfolio-ilits"
+    },
+    {
+      "header": "Alto Cup 5.0",
+      "caption": "Video Production Technician, worked on everything relating to documentation of the event.",
+      "tech": ["Sony Vegas 17"],
+      "img": "/assets/logo-alto.webp",
+      "url": "https://instagram.com/altocup"
     }
   ]
 }
