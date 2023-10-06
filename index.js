@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config();
 const procenv = process.env,
   express = require("express"),
   app = express(),
@@ -15,10 +15,10 @@ const mainSlowDown = slowDown({
   delayMs: 500,
 });
 app.use("/", mainSlowDown, express.static("static"));
-app.use("/assets", express.static("static"));
+app.use("/assets", express.static("assets"));
 
 app.get("/projects", (req, res) => {
-  res.json(JSON.parse(fs.readFileSync("projects.json").toString()));
+  res.send(JSON.parse(fs.readFileSync("projects.json").toString()));
 });
 
 app.all("*", (req, res) => {

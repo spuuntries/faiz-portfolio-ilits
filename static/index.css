@@ -109,8 +109,11 @@ main {
 }
 
 .workimg {
-  width: 1em;
+  width: clamp(15px, 5vw, 30px);
   display: inline-block;
+  vertical-align: top;
+  border-radius: 5px;
+  padding-right: 1em;
 }
 
 .section {
