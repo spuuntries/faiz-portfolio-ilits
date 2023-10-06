@@ -16,8 +16,13 @@
   }
 }
 
+#navbar {
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-bottom: 2em;
+}
+
 #🏷️ {
-  font-size: 3em;
+  font-size: 10em;
   font-family: "Pixelify Sans", cursive;
 }
 
@@ -25,15 +30,87 @@
   animation: pulsate-pink 2.5s infinite alternate;
 }
 
+#first-section {
+  text-align: center;
+}
+
 main {
   position: relative;
+  padding-top: 0;
+}
+
+#biodata {
+  display: inline-block;
 }
 
 #📷 {
-  position: absolute;
-  right: 0;
-  top: 0;
+  display: inline-block;
+}
+
+#📷 > img {
   width: 12em;
   height: 16em;
   border-radius: 30px;
+}
+
+.pad {
+  padding-right: 2em;
+  padding-left: 2em;
+}
+
+#greet {
+  display: inline-block;
+}
+
+.greetelem {
+  font-family: "Raleway", sans-serif;
+  transform: translateX(100%);
+  padding-right: 0.5vw;
+  text-align: right;
+  margin-bottom: 0;
+  opacity: 0;
+}
+
+#greet #head {
+  font-family: "Dela Gothic One", cursive;
+  font-size: clamp(20px, 5vw, 50px);
+  vertical-align: 20%;
+  color: whitesmoke;
+}
+
+#works {
+  display: inline-block;
+  text-align: center;
+}
+
+#workshead {
+  opacity: 0;
+  font-family: "Dela Gothic One", cursive;
+  font-size: clamp(15px, 5vw, 30px);
+}
+
+.worksquare {
+  display: inline-block;
+  opacity: 0;
+  text-align: left;
+}
+
+.worksquare > p.wrapped {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.worksquare > p {
+  overflow: scroll;
+  white-space: normal;
+}
+
+.section {
+  padding-bottom: 2em;
+}
+
+#contacts {
+  text-align: center;
 }

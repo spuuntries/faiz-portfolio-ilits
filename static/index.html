@@ -42,35 +42,284 @@
     <title>Faiz Kautsar - Portfolio</title>
   </head>
   <body>
-    <nav class="container-fluid">
+    <nav class="container-fluid" id="navbar">
+      <ul></ul>
       <ul>
         <li>
-          <div id="🏷️"><p>Faiz Kautsar</p></div>
+          <div id="🏷️"><p style="margin-bottom: 0">Faiz Kautsar</p></div>
+          <div id="contacts">abcd</div>
         </li>
       </ul>
       <ul></ul>
-      <ul></ul>
     </nav>
 
-    <main class="container">
-      <img id="📷" src="./foto.webp" alt="My face, w/o glasses" />
-    </main>
+    <div class="container">
+      <div id="first-section">
+        <div id="biodata" class="section">
+          <div id="greet">
+            <p id="head" class="greetelem">Hi There!</p>
+            <p class="greetelem">I'm Faiz M. Kautsar,</p>
+            <p class="greetelem">
+              <b><span id="jobdesc"></span></b>
+            </p>
+          </div>
+          <div id="📷">
+            <img src="./foto.webp" alt="My face, without glasses" />
+          </div>
+        </div>
+        <br />
+        <div id="works" class="section">
+          <p id="workshead">My previous works:</p>
+        </div>
+      </div>
+    </div>
 
     <script>
+      let array = [
+        { header: "Header 1", caption: "Caption 1" },
+        { header: "Header 2", caption: "Caption 2" },
+        { header: "Header 3", caption: "Caption 3" },
+        { header: "Header 4", caption: "Caption 4" },
+        { header: "Header 5", caption: "Caption 5" },
+        { header: "Header 6", caption: "Caption 6" },
+        // more objects...
+      ];
+
+      function getContrast(hexColor) {
+        if (hexColor.indexOf("#") === 0) {
+          hexColor = hexColor.slice(1);
+        }
+        if (hexColor.length === 3) {
+          hexColor =
+            hexColor[0] +
+            hexColor[0] +
+            hexColor[1] +
+            hexColor[1] +
+            hexColor[2] +
+            hexColor[2];
+        }
+        if (hexColor.length !== 6) {
+          throw new Error("Invalid HEX color.");
+        }
+        const r = parseInt(hexColor.slice(0, 2), 16),
+          g = parseInt(hexColor.slice(2, 4), 16),
+          b = parseInt(hexColor.slice(4, 6), 16);
+        // https://stackoverflow.com/a/3943023/112731
+        return r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#000000" : "#FFFFFF";
+      }
+
+      function hexToRgb(hex) {
+        let r = 0,
+          g = 0,
+          b = 0;
+
+        // 3 digits
+        if (hex.length == 4) {
+          r = "0x" + hex[1] + hex[1];
+          g = "0x" + hex[2] + hex[2];
+          b = "0x" + hex[3] + hex[3];
+
+          // 6 digits
+        } else if (hex.length == 7) {
+          r = "0x" + hex[1] + hex[2];
+          g = "0x" + hex[3] + hex[4];
+          b = "0x" + hex[5] + hex[6];
+        }
+
+        return "rgba(" + +r + "," + +g + "," + +b + "," + 1 + ")";
+      }
+
+      function createWork(title, desc) {
+        let newElement = document.createElement("div");
+        newElement.classList.add("worksquare");
+
+        function generateHex() {
+          let bghex =
+            "#" +
+            (
+              "000000" + Math.floor(Math.random() * 16777215).toString(16)
+            ).slice(-6);
+          try {
+            getContrast(bghex);
+          } catch (e) {
+            return generateHex();
+          }
+          return bghex;
+        }
+
+        let bghex = generateHex();
+        newElement.style.backgroundColor = hexToRgb(bghex);
+
+        newElement.style.padding = "10px";
+
+        let header = document.createElement("h2");
+        let caption = document.createElement("p");
+
+        header.textContent = title;
+        header.style.color = getContrast(bghex);
+        caption.textContent = desc;
+        caption.style.color = getContrast(bghex);
+
+        caption.className = "wrapped";
+
+        newElement.appendChild(header);
+        newElement.appendChild(caption);
+        newElement.style.position = "relative";
+        newElement.style.zIndex = 0;
+
+        // NOTE - This handles mouseover
+        newElement.addEventListener("mouseover", () => {
+          newElement.style.zIndex = 1;
+          let match = newElement.style.backgroundColor.match(
+              /^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)$/
+            ),
+            rgba = {
+              r: match[1],
+              g: match[2],
+              b: match[3],
+              a: match[4] ? match[4] : 1,
+            };
+
+          anime({
+            targets: rgba,
+            a: 0.6,
+            update: function () {
+              newElement.style.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
+            },
+            duration: 100,
+            easing: "linear",
+          });
+          anime({
+            targets: newElement,
+            scale: 2,
+            easing: "easeOutElastic(1, 1)",
+          });
+
+          let bloor = { b: 0 };
+          anime({
+            targets: bloor,
+            b: 10,
+            update: function () {
+              newElement.style.backdropFilter = `blur(${bloor.b}px)`;
+            },
+            duration: 100,
+            easing: "linear",
+          });
+
+          caption.className = "";
+        });
+
+        // NOTE - This handles mouseleave
+        newElement.addEventListener("mouseleave", () => {
+          newElement.style.zIndex = 0;
+          let match = newElement.style.backgroundColor.match(
+              /^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)$/
+            ),
+            rgba = {
+              r: match[1],
+              g: match[2],
+              b: match[3],
+              a: match[4] ? match[4] : 1,
+            };
+
+          anime({
+            targets: rgba,
+            a: 1,
+            update: function () {
+              newElement.style.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
+            },
+            duration: 100,
+            easing: "linear",
+          });
+
+          let bloor = { b: 10 };
+          anime({
+            targets: bloor,
+            b: 0,
+            update: function () {
+              newElement.style.backdropFilter = `blur(${bloor.b}px)`;
+            },
+            duration: 100,
+            easing: "linear",
+          });
+
+          anime({
+            targets: newElement,
+            scale: 1,
+            easing: "easeOutElastic(1, 1)",
+          });
+
+          caption.className = "wrapped";
+        });
+
+        return newElement;
+      }
+
       const tag = document.getElementById("🏷️");
       tag.addEventListener("mouseenter", () => {
         anime({
           targets: tag,
           scale: 1.25,
-          translateX: 10,
         });
       });
+
       tag.addEventListener("mouseleave", () => {
         anime({ targets: tag, scale: 1, translateX: 1 });
       });
 
       document.addEventListener("DOMContentLoaded", () => {
-        anime({ targets: "#📷", opacity: [0, 1], translateX: [100, 1] });
+        let trackDone = 0;
+
+        function startTyping() {
+          new Typed("#jobdesc", {
+            strings: [
+              "A Back-end<br>Developer",
+              "A Front-end<br>Developer",
+              "An AI Researcher",
+              "A 2D Illustrator",
+              "A Video Production<br>Technician",
+            ],
+            typeSpeed: 30,
+            loop: true,
+            onLastStringBackspaced: () => {
+              if (!trackDone) {
+                anime({ targets: "#workshead", opacity: [0, 1] });
+                array.forEach((w) => {
+                  document
+                    .getElementById("works")
+                    .appendChild(createWork(w.header, w.caption));
+                });
+                anime({
+                  targets: ".worksquare",
+                  opacity: [0, 1],
+                  translateX: [-100, 1],
+                  delay: anime.stagger(250),
+                  easing: "easeOutElastic(1, 1)",
+                });
+              }
+              trackDone = 1;
+            },
+          });
+        }
+
+        anime({
+          targets: "#📷",
+          opacity: [0, 1],
+          translateX: [100, 1],
+          easing: "easeOutElastic(1, .6)",
+          complete: () => {
+            anime({
+              targets: ".greetelem",
+              opacity: [0, 1],
+              translateX: ["100%", "0"],
+              easing: "easeOutElastic(1, 1)",
+              delay: anime.stagger(100),
+              complete: () => {
+                startTyping();
+              },
+            });
+          },
+        });
       });
     </script>
   </body>

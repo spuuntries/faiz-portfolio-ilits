@@ -1,6 +1,16 @@
 {
+  "projects": {
     "kekbot": {
-        "icon": "",
-        "desc": ""
+      "title": "Kekbot",
+      "caption": "A Discord Utility Bot I made in Discord.js for a Discord server I started circa. 2020 with 2.5k members.",
+      "tech": ["RESTful APIs", "node.js"],
+      "repo": "https://github.com/thisisartunion/kekbot"
+    },
+    "disboard-reminder": {
+      "title": "Kekbot DISBOARD",
+      "caption": "Kekbot DISBOARD bumping reminder, with a status page.",
+      "tech": ["socket.io", "node.js"],
+      "repo": "https://github.com/spuuntries/disbomp"
     }
+  }
 }
