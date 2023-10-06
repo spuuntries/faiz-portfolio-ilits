@@ -96,300 +96,275 @@
     </div>
 
     <script>
-      let array = [
-        {
-          header: "Kekbot",
-          caption: "A Discord Utility Bot I made in Discord.js for Art Union.",
-          tech: ["RESTful APIs", "node.js"],
-          img: "",
-          url: "https://github.com/thisisartunion/kekbot",
-        },
-        {
-          header: "Kekbot DISBOARD",
-          caption: "Kekbot DISBOARD bumping reminder, with a status page.",
-          tech: ["socket.io", "node.js"],
-          img: "",
-          url: "https://github.com/spuuntries/disbomp",
-        },
-        {
-          header: "Reminate",
-          caption: "A node.js package to work with Illuminarty.",
-          tech: ["", "node.js"],
-          img: "",
-          url: "https://github.com/spuuntries/reminate",
-        },
-        {
-          header: "Art Union",
-          caption: "A Discord server I started circa. 2020 with 2.3k members.",
-          tech: ["RESTful APIs"],
-          img: "",
-          url: "https://discord.thisisartunion.com",
-        },
-      ];
+      fetch(window.location.origin + "/projects").then(async (res) => {
+        array = (await res.json())["projects"];
 
-      function getContrast(hexColor) {
-        if (hexColor.indexOf("#") === 0) {
-          hexColor = hexColor.slice(1);
-        }
-        if (hexColor.length === 3) {
-          hexColor =
-            hexColor[0] +
-            hexColor[0] +
-            hexColor[1] +
-            hexColor[1] +
-            hexColor[2] +
-            hexColor[2];
-        }
-        if (hexColor.length !== 6) {
-          throw new Error("Invalid HEX color.");
-        }
-        const r = parseInt(hexColor.slice(0, 2), 16),
-          g = parseInt(hexColor.slice(2, 4), 16),
-          b = parseInt(hexColor.slice(4, 6), 16);
-        // https://stackoverflow.com/a/3943023/112731
-        return r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#000000" : "#FFFFFF";
-      }
-
-      function hexToRgb(hex) {
-        let r = 0,
-          g = 0,
-          b = 0;
-
-        // 3 digits
-        if (hex.length == 4) {
-          r = "0x" + hex[1] + hex[1];
-          g = "0x" + hex[2] + hex[2];
-          b = "0x" + hex[3] + hex[3];
-
-          // 6 digits
-        } else if (hex.length == 7) {
-          r = "0x" + hex[1] + hex[2];
-          g = "0x" + hex[3] + hex[4];
-          b = "0x" + hex[5] + hex[6];
-        }
-
-        return "rgba(" + +r + "," + +g + "," + +b + "," + 1 + ")";
-      }
-
-      function createWork(title, desc, tech, img) {
-        let newElement = document.createElement("div");
-        newElement.classList.add("worksquare");
-
-        function generateHex() {
-          let bghex =
-            "#" +
-            (
-              "000000" + Math.floor(Math.random() * 16777215).toString(16)
-            ).slice(-6);
-          try {
-            getContrast(bghex);
-          } catch (e) {
-            return generateHex();
+        function getContrast(hexColor) {
+          if (hexColor.indexOf("#") === 0) {
+            hexColor = hexColor.slice(1);
           }
-          return bghex;
+          if (hexColor.length === 3) {
+            hexColor =
+              hexColor[0] +
+              hexColor[0] +
+              hexColor[1] +
+              hexColor[1] +
+              hexColor[2] +
+              hexColor[2];
+          }
+          if (hexColor.length !== 6) {
+            throw new Error("Invalid HEX color.");
+          }
+          const r = parseInt(hexColor.slice(0, 2), 16),
+            g = parseInt(hexColor.slice(2, 4), 16),
+            b = parseInt(hexColor.slice(4, 6), 16);
+          // https://stackoverflow.com/a/3943023/112731
+          return r * 0.299 + g * 0.587 + b * 0.114 > 186
+            ? "#000000"
+            : "#FFFFFF";
         }
 
-        let bghex = generateHex();
-        newElement.style.backgroundColor = hexToRgb(bghex);
+        function hexToRgb(hex) {
+          let r = 0,
+            g = 0,
+            b = 0;
 
-        newElement.style.padding = "1em";
+          // 3 digits
+          if (hex.length == 4) {
+            r = "0x" + hex[1] + hex[1];
+            g = "0x" + hex[2] + hex[2];
+            b = "0x" + hex[3] + hex[3];
 
-        let header = document.createElement("h2");
-        let image = document.createElement("img");
-        let techno = document.createElement("p");
-        let caption = document.createElement("p");
+            // 6 digits
+          } else if (hex.length == 7) {
+            r = "0x" + hex[1] + hex[2];
+            g = "0x" + hex[3] + hex[4];
+            b = "0x" + hex[5] + hex[6];
+          }
 
-        if (title.split(" ").length > 1) {
-          title = title.split(" ").join("<br />");
+          return "rgba(" + +r + "," + +g + "," + +b + "," + 1 + ")";
         }
 
-        let contrastCol = getContrast(bghex);
-        header.innerHTML = title;
-        techno.innerHTML = "<b>Tech: </b>" + tech;
-        caption.textContent = desc;
-        image.src = img;
+        function createWork(title, desc, tech, img) {
+          let newElement = document.createElement("div");
+          newElement.classList.add("worksquare");
 
-        header.style.margin = 0;
-        header.style.paddingRight = "1em";
+          function generateHex() {
+            let bghex =
+              "#" +
+              (
+                "000000" + Math.floor(Math.random() * 16777215).toString(16)
+              ).slice(-6);
+            try {
+              getContrast(bghex);
+            } catch (e) {
+              return generateHex();
+            }
+            return bghex;
+          }
 
-        header.style.color = contrastCol;
-        header.style.display = "inline-block";
-        header.style.fontFamily = '"Pixelify Sans", cursive';
-        techno.style.color = contrastCol;
-        caption.style.color = contrastCol;
+          let bghex = generateHex();
+          newElement.style.backgroundColor = hexToRgb(bghex);
 
-        caption.className = "wrapped";
-        image.className = "workimg";
+          newElement.style.padding = "1em";
 
-        newElement.appendChild(header);
-        newElement.appendChild(image);
-        newElement.appendChild(techno);
-        newElement.appendChild(caption);
+          let header = document.createElement("h2");
+          let image = document.createElement("img");
+          let techno = document.createElement("p");
+          let caption = document.createElement("p");
 
-        newElement.style.position = "relative";
-        newElement.style.zIndex = 0;
+          if (title.split(" ").length > 1) {
+            title = title.split(" ").join("<br />");
+          }
 
-        // NOTE - This handles mouseover
-        newElement.addEventListener("mouseover", () => {
-          newElement.style.zIndex = 1;
-          let match = newElement.style.backgroundColor.match(
-              /^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)$/
-            ),
-            rgba = {
-              r: match[1],
-              g: match[2],
-              b: match[3],
-              a: match[4] ? match[4] : 1,
-            };
+          let contrastCol = getContrast(bghex);
+          header.innerHTML = title;
+          techno.innerHTML = "<b>Tech: </b>" + tech;
+          caption.textContent = desc;
+          image.src = img;
 
-          anime({
-            targets: rgba,
-            a: 0.6,
-            update: function () {
-              newElement.style.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
-            },
-            duration: 100,
-            easing: "linear",
-          });
+          header.style.margin = 0;
+          header.style.paddingRight = "1em";
 
-          anime({
-            targets: newElement,
-            scale: 2,
-            easing: "easeOutElastic(1, 1)",
-            duration: "250ms",
-          });
-
-          let bloor = { b: 0 };
-          anime({
-            targets: bloor,
-            b: 10,
-            update: function () {
-              newElement.style.backdropFilter = `blur(${bloor.b}px)`;
-            },
-            duration: 100,
-            easing: "linear",
-          });
-
-          caption.className = "";
-        });
-
-        // NOTE - This handles mouseleave
-        newElement.addEventListener("mouseleave", () => {
-          newElement.style.zIndex = 0;
-          let match = newElement.style.backgroundColor.match(
-              /^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)$/
-            ),
-            rgba = {
-              r: match[1],
-              g: match[2],
-              b: match[3],
-              a: match[4] ? match[4] : 1,
-            };
-
-          anime({
-            targets: rgba,
-            a: 1,
-            update: function () {
-              newElement.style.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
-            },
-            duration: 100,
-            easing: "linear",
-          });
-
-          let bloor = { b: 10 };
-          anime({
-            targets: bloor,
-            b: 0,
-            update: function () {
-              newElement.style.backdropFilter = `blur(${bloor.b}px)`;
-            },
-            duration: 100,
-            easing: "linear",
-          });
-
-          anime({
-            targets: newElement,
-            scale: 1,
-            easing: "easeOutElastic(1, 1)",
-            duration: "250ms",
-          });
+          header.style.color = contrastCol;
+          header.style.display = "inline-block";
+          header.style.fontFamily = '"Pixelify Sans", cursive';
+          techno.style.color = contrastCol;
+          caption.style.color = contrastCol;
 
           caption.className = "wrapped";
-        });
+          image.className = "workimg";
 
-        return newElement;
-      }
+          newElement.appendChild(header);
+          newElement.appendChild(image);
+          newElement.appendChild(techno);
+          newElement.appendChild(caption);
 
-      const tag = document.getElementById("🏷️");
-      tag.addEventListener("mouseenter", () => {
-        anime({
-          targets: tag,
-          scale: 1.25,
-        });
-      });
+          newElement.style.position = "relative";
+          newElement.style.zIndex = 0;
 
-      tag.addEventListener("mouseleave", () => {
-        anime({ targets: tag, scale: 1, translateX: 1 });
-      });
+          // NOTE - This handles mouseover
+          newElement.addEventListener("mouseover", () => {
+            newElement.style.zIndex = 1;
+            let match = newElement.style.backgroundColor.match(
+                /^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)$/
+              ),
+              rgba = {
+                r: match[1],
+                g: match[2],
+                b: match[3],
+                a: match[4] ? match[4] : 1,
+              };
 
-      document.addEventListener("DOMContentLoaded", () => {
-        let trackDone = 0;
+            anime({
+              targets: rgba,
+              a: 0.6,
+              update: function () {
+                newElement.style.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
+              },
+              duration: 100,
+              easing: "linear",
+            });
 
-        function startTyping() {
-          new Typed("#jobdesc", {
-            strings: [
-              "A Back-end<br>Developer",
-              "A Front-end<br>Developer",
-              "An AI Researcher",
-              "A 2D Illustrator",
-              "A Video Production<br>Technician",
-            ],
-            typeSpeed: 20,
-            loop: true,
-            onLastStringBackspaced: () => {
-              if (!trackDone) {
-                anime({ targets: "#workshead", opacity: [0, 1] });
-                array.forEach((w) => {
-                  document
-                    .getElementById("works")
-                    .appendChild(
-                      createWork(
-                        w.header,
-                        w.caption,
-                        w.tech.filter((s) => s.length).join(", ")
-                      )
-                    );
-                });
-                anime({
-                  targets: ".worksquare",
-                  opacity: [0, 1],
-                  translateX: [-100, 1],
-                  delay: anime.stagger(250),
-                  easing: "easeOutElastic(1, 1)",
-                });
-              }
-              trackDone = 1;
-            },
+            anime({
+              targets: newElement,
+              scale: 2,
+              easing: "easeOutElastic(1, 1)",
+              duration: "250ms",
+            });
+
+            let bloor = { b: 0 };
+            anime({
+              targets: bloor,
+              b: 10,
+              update: function () {
+                newElement.style.backdropFilter = `blur(${bloor.b}px)`;
+              },
+              duration: 100,
+              easing: "linear",
+            });
+
+            caption.className = "";
           });
+
+          // NOTE - This handles mouseleave
+          newElement.addEventListener("mouseleave", () => {
+            newElement.style.zIndex = 0;
+            let match = newElement.style.backgroundColor.match(
+                /^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)$/
+              ),
+              rgba = {
+                r: match[1],
+                g: match[2],
+                b: match[3],
+                a: match[4] ? match[4] : 1,
+              };
+
+            anime({
+              targets: rgba,
+              a: 1,
+              update: function () {
+                newElement.style.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
+              },
+              duration: 100,
+              easing: "linear",
+            });
+
+            let bloor = { b: 10 };
+            anime({
+              targets: bloor,
+              b: 0,
+              update: function () {
+                newElement.style.backdropFilter = `blur(${bloor.b}px)`;
+              },
+              duration: 100,
+              easing: "linear",
+            });
+
+            anime({
+              targets: newElement,
+              scale: 1,
+              easing: "easeOutElastic(1, 1)",
+              duration: "250ms",
+            });
+
+            caption.className = "wrapped";
+          });
+
+          return newElement;
         }
 
-        anime({
-          targets: "#📷",
-          opacity: [0, 1],
-          translateX: [100, 1],
-          easing: "easeOutElastic(1, .6)",
-          complete: () => {
-            anime({
-              targets: ".greetelem",
-              opacity: [0, 1],
-              translateX: ["100%", "0"],
-              easing: "easeOutElastic(1, 1)",
-              delay: anime.stagger(100),
-              complete: () => {
-                startTyping();
+        const tag = document.getElementById("🏷️");
+        tag.addEventListener("mouseenter", () => {
+          anime({
+            targets: tag,
+            scale: 1.25,
+          });
+        });
+
+        tag.addEventListener("mouseleave", () => {
+          anime({ targets: tag, scale: 1, translateX: 1 });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+          let trackDone = 0;
+
+          function startTyping() {
+            new Typed("#jobdesc", {
+              strings: [
+                "A Back-end<br>Developer",
+                "A Front-end<br>Developer",
+                "An AI Researcher",
+                "A 2D Illustrator",
+                "A Video Production<br>Technician",
+              ],
+              typeSpeed: 20,
+              loop: true,
+              onLastStringBackspaced: () => {
+                if (!trackDone) {
+                  anime({ targets: "#workshead", opacity: [0, 1] });
+                  array.forEach((w) => {
+                    document
+                      .getElementById("works")
+                      .appendChild(
+                        createWork(
+                          w.header,
+                          w.caption,
+                          w.tech.filter((s) => s.length).join(", ")
+                        )
+                      );
+                  });
+                  anime({
+                    targets: ".worksquare",
+                    opacity: [0, 1],
+                    translateX: [-100, 1],
+                    delay: anime.stagger(250),
+                    easing: "easeOutElastic(1, 1)",
+                  });
+                }
+                trackDone = 1;
               },
             });
-          },
+          }
+
+          anime({
+            targets: "#📷",
+            opacity: [0, 1],
+            translateX: [100, 1],
+            easing: "easeOutElastic(1, .6)",
+            complete: () => {
+              anime({
+                targets: ".greetelem",
+                opacity: [0, 1],
+                translateX: ["100%", "0"],
+                easing: "easeOutElastic(1, 1)",
+                delay: anime.stagger(100),
+                complete: () => {
+                  startTyping();
+                },
+              });
+            },
+          });
         });
       });
     </script>

@@ -1,7 +1,9 @@
+require("dotenv").config()
 const procenv = process.env,
   express = require("express"),
   app = express(),
   fs = require("fs"),
+  morgan = require("morgan"),
   slowDown = require("express-slow-down");
 
 app.enable("trust proxy");
