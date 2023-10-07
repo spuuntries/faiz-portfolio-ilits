@@ -3,28 +3,35 @@
     {
       "header": "Kekbot",
       "caption": "A Discord Utility Bot I made in Discord.js for Art Union.",
-      "tech": ["RESTful APIs", "node.js"],
+      "tech": ["RESTful APIs", "websockets", "node.js", "SQLite3"],
       "img": "/assets/logo-kekbot.webp",
       "url": "https://github.com/thisisartunion/kekbot"
     },
     {
-      "header": "Kekbot DISBOARD",
-      "caption": "Kekbot DISBOARD bumping reminder, with a status page.",
-      "tech": ["socket.io", "node.js", "express.js"],
-      "img": "/assets/logo-kekbot.webp",
-      "url": "https://github.com/spuuntries/disbomp"
-    },
-    {
       "header": "Chatbod Engine",
       "caption": "A personal LLM-based companion engine, powering kekbot's talking functionality.",
-      "tech": ["python", "pythonia", "node.js", "LLaMa"],
+      "tech": ["python", "pythonia", "node.js", "LLaMa", "SQLite3"],
       "img": "/assets/logo-kekbot.webp",
       "url": "https://github.com/spuuntries/chatbod"
     },
     {
+      "header": "Kekbot DISBOARD",
+      "caption": "Kekbot DISBOARD bumping reminder, with a status page.",
+      "tech": ["socket.io", "node.js", "express.js", "SQLite3"],
+      "img": "/assets/logo-kekbot.webp",
+      "url": "https://github.com/spuuntries/disbomp"
+    },
+    {
+      "header": "Shroudify",
+      "caption": "A text steganography library, based on the Cloakify project.",
+      "tech": ["node.js", "lodash"],
+      "img": "/assets/logo-kekbot.webp",
+      "url": "https://github.com/spuuntries/shroudify"
+    },
+    {
       "header": "Reminate",
       "caption": "A node.js package to work with Illuminarty.",
-      "tech": ["node.js"],
+      "tech": ["RESTful APIs", "node.js"],
       "img": "/assets/logo-au.webp",
       "url": "https://github.com/spuuntries/reminate"
     },

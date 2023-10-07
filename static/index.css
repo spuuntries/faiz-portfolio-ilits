@@ -1,3 +1,24 @@
+:root {
+  --footer-width: max(50px, 4vw);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(136, 136, 136) rgb(82, 82, 82);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(136, 136, 136);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(82, 82, 82);
+}
+
 /* Credit to Silvia O'Dwyer at CSS Tricks */
 @keyframes pulsate-pink {
   100% {
@@ -7,6 +28,7 @@
       0 0 90px rgb(225, 0, 255), 0 0 100px rgb(225, 0, 255),
       0 0 150px rgb(225, 0, 255);
   }
+
   0% {
     /* Smaller blur radius */
     text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff,
@@ -85,9 +107,11 @@ main {
 }
 
 #workshead {
-  opacity: 0;
   font-family: "Dela Gothic One", cursive;
   font-size: clamp(15px, 5vw, 30px);
+  line-height: 1em;
+  color: white;
+  opacity: 0;
 }
 
 .worksquare {
@@ -99,6 +123,7 @@ main {
   overflow: scroll;
   font-size: clamp(5px, 5vw, 20px);
   font-family: "Raleway", sans-serif;
+  overflow-x: hidden;
 }
 
 .worksquare > p.wrapped {
@@ -137,4 +162,12 @@ main {
 
 #contacts > a > img:hover {
   width: max(25px, 2.5vw);
+}
+
+#footer {
+  color: whitesmoke;
+}
+
+#footer > a:hover {
+  --footer-width: max(60px, 5vw);
 }

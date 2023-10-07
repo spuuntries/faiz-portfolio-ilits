@@ -47,9 +47,7 @@
       <ul>
         <li>
           <div id="🏷️">
-            <p style="margin-bottom: 0; font-size: max(2em, 2.5vw)">
-              Faiz Kautsar
-            </p>
+            <p style="margin-bottom: 0; font-size: max(2em, 2.5vw)">spuun</p>
           </div>
           <div id="contacts">
             <a href="https://github.com/spuuntries"
@@ -98,6 +96,36 @@
           </p>
         </div>
       </div>
+
+      <nav>
+        <ul></ul>
+        <ul>
+          <p id="footer">
+            <b>Powered by</b><br />
+            <a
+              href="https://picocss.com"
+              style="color: whitesmoke"
+              aria-label="picocss"
+            >
+              <svg
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1000 1000"
+                style="
+                  width: var(--footer-width);
+                  transition: width 0.25s ease-in-out;
+                "
+              >
+                <path
+                  fill="currentColor"
+                  d="M633.43 429.23c0 118.38-49.76 184.72-138.87 184.72-53 0-92.04-25.37-108.62-67.32h-2.6v203.12H250V249.7h133.67v64.72h2.28c17.24-43.9 55.3-69.92 107-69.92 90.4 0 140.48 66.02 140.48 184.73zm-136.6 0c0-49.76-22.1-81.96-56.9-81.96s-56.9 32.2-57.24 82.28c.33 50.4 22.1 81.63 57.24 81.63 35.12 0 56.9-31.87 56.9-81.95zM682.5 547.5c0-37.32 30.18-67.5 67.5-67.5s67.5 30.18 67.5 67.5S787.32 615 750 615s-67.5-30.18-67.5-67.5z"
+                ></path>
+              </svg>
+            </a>
+          </p>
+        </ul>
+        <ul></ul>
+      </nav>
     </div>
 
     <script>
@@ -150,11 +178,27 @@
         newElement.classList.add("worksquare");
 
         function generateHex() {
+          let hexes = [
+            "401F3E",
+            "40274A",
+            "3F2E56",
+            "423767",
+            "453F78",
+            "5D6D92",
+            "759AAB",
+            "B8C6A6",
+            "FAF2A1",
+            "A7754D",
+            "EAB464",
+            "DCCCBB",
+            "8D98A7",
+            "646E78",
+            "5B646D",
+            "A09D9A",
+          ];
           let bghex =
             "#" +
-            (
-              "000000" + Math.floor(Math.random() * 16777215).toString(16)
-            ).slice(-6);
+            hexes[crypto.getRandomValues(new Uint8Array(1))[0] % hexes.length];
           try {
             getContrast(bghex);
           } catch (e) {
@@ -183,6 +227,7 @@
         techno.innerHTML = "<b>Tech: </b>" + tech;
         caption.textContent = desc;
         image.src = img;
+        image.setAttribute("loading", "lazy");
         url.href = link;
         url.innerHTML = "<br /><u>link<u/>";
 
@@ -315,17 +360,18 @@
         function startTyping() {
           new Typed("#jobdesc", {
             strings: [
-              "A Back-end<br>Developer",
-              "A Front-end<br>Developer",
+              "A Back-end<br/>Developer",
               "An AI Researcher",
-              "A 2D Illustrator",
-              "A Video Production<br>Technician",
+              "A Creative<br/>Generalist",
             ],
-            typeSpeed: 10,
+            typeSpeed: 25,
             loop: true,
             onLastStringBackspaced: async () => {
               if (trackDone) {
                 trackDone = false;
+                document
+                  .getElementById("works")
+                  .setAttribute("aria-busy", "true");
                 const resArr = (
                   await (
                     await fetch(`${window.location.origin}/projects`)
@@ -335,6 +381,7 @@
                 console.log(resArr);
 
                 anime({ targets: "#workshead", opacity: [0, 1] });
+                document.getElementById("works").removeAttribute("aria-busy");
 
                 resArr.forEach((w) => {
                   document
