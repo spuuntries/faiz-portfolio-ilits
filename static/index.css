@@ -21,20 +21,14 @@
 
 /* Credit to Silvia O'Dwyer at CSS Tricks */
 @keyframes pulsate-pink {
+  0%,
   100% {
-    /* Larger blur radius */
-    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
-      0 0 40px rgb(225, 0, 255), 0 0 80px rgb(225, 0, 255),
-      0 0 90px rgb(225, 0, 255), 0 0 100px rgb(225, 0, 255),
-      0 0 150px rgb(225, 0, 255);
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff,
+      0 0 40px #ff00ff;
   }
-
-  0% {
-    /* Smaller blur radius */
-    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff,
-      0 0 10px rgb(225, 0, 255), 0 0 45px rgb(225, 0, 255),
-      0 0 55px rgb(225, 0, 255), 0 0 70px rgb(225, 0, 255),
-      0 0 80px rgb(225, 0, 255);
+  50% {
+    text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff,
+      0 0 50px #ff00ff, 0 0 60px #ff00ff;
   }
 }
 
@@ -44,6 +38,7 @@
 }
 
 #🏷️ {
+  text-align: center;
   font-weight: bold;
   font-family: "Pixelify Sans", cursive;
 }
@@ -146,28 +141,37 @@ main {
 }
 
 #contacts {
-  text-align: center;
+  text-align: left;
 }
 
 #contacts > a {
   display: inline-block;
-  padding-right: 1em;
+  padding: 1em;
 }
 
 #contacts > a > img {
-  width: max(20px, 2vw);
+  width: max(30px, 3vw);
   border-radius: 0.5vw;
   transition: width 0.25s ease-in-out;
 }
 
 #contacts > a > img:hover {
-  width: max(25px, 2.5vw);
+  width: max(35px, 3.5vw);
 }
 
 #footer {
+  text-align: center;
   color: whitesmoke;
+}
+
+#footer > a {
+  margin: 0.05em;
 }
 
 #footer > a:hover {
   --footer-width: max(60px, 5vw);
+}
+
+#footer > a > img {
+  border-radius: 3px;
 }
