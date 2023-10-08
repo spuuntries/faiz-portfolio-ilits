@@ -109,6 +109,10 @@ main {
   opacity: 0;
 }
 
+#workshead > span {
+  font-family: "Raleway", sans-serif;
+}
+
 .worksquare {
   display: inline-block;
   opacity: 0;
@@ -160,6 +164,7 @@ main {
 }
 
 #footer {
+  font-family: "Raleway", sans-serif;
   text-align: center;
   color: whitesmoke;
 }
