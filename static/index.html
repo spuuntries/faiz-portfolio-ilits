@@ -450,6 +450,13 @@
 
                 anime({ targets: "#workshead", opacity: [0, 1] });
                 document.getElementById("works").removeAttribute("aria-busy");
+                try {
+                  document
+                    .getElementById("works")
+                    .scrollIntoView({ behavior: "smooth" });
+                } catch (e) {
+                  console.log("Scroll failed :C");
+                }
 
                 resArr.forEach((w) => {
                   document
