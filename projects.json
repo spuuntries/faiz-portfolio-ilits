@@ -51,7 +51,7 @@
     },
     {
       "header": "Portfolio",
-      "caption": "The thing you're looking at right now, my portfolio.",
+      "caption": "The thing you're looking at right now, my portfolio. Fun fact: I made this initially for ILITS and the entire base project was done in a day!",
       "tech": ["REST API", "anime.js", "Typed.js", "pico.css", "express.js"],
       "img": "/foto.webp",
       "url": "https://github.com/spuuntries/faiz-portfolio-ilits"
