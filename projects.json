@@ -15,11 +15,11 @@
       "url": "https://github.com/spuuntries/chatbod"
     },
     {
-      "header": "Kekbot DISBOARD",
-      "caption": "Kekbot DISBOARD bumping reminder, with a status page.",
-      "tech": ["socket.io", "node.js", "express.js", "SQLite3"],
+      "header": "Replicate Cogs",
+      "caption": "Multiple Cogs (A docker-like interface for AI inference) I maintain on Replicate.com for AI inference and rapid prototyping.",
+      "tech": ["python", "LLaMa", "LLMs", "Replicate"],
       "img": "/assets/logo-kekbot.webp",
-      "url": "https://github.com/spuuntries/disbomp"
+      "url": "https://github.com/spuuntries/rp-cogs"
     },
     {
       "header": "Shroudify",
@@ -36,9 +36,16 @@
       "url": "https://github.com/spuuntries/reminate"
     },
     {
+      "header": "NFCel",
+      "caption": "A proof-of-work blockchain PoC I made as an april fools joke.",
+      "tech": ["node.js", "cryptography", "blockchain"],
+      "img": "/assets/logo-kekbot.webp",
+      "url": "https://github.com/spuuntries/nfcel"
+    },
+    {
       "header": "Art Union",
       "caption": "A Discord art collective I co-founded circa. 2020 with 2.3k members.",
-      "tech": ["RESTful APIs"],
+      "tech": ["RESTful APIs", "Discord"],
       "img": "/assets/logo-au.webp",
       "url": "https://discord.thisisartunion.com"
     },
@@ -50,11 +57,32 @@
       "url": "https://github.com/spuuntries/faiz-portfolio-ilits"
     },
     {
+      "header": "Sebroken",
+      "caption": "A Safe Exam Browser (SEB) automated reconfiguration tool.",
+      "tech": ["Safe Exam Browser", "SEB"],
+      "img": "/assets/logo-sebroken.webp",
+      "url": "https://github.com/spuuntries/sebroken"
+    },
+    {
+      "header": "RGPloit",
+      "caption": "A chrome extension to access educational materials free of cost.",
+      "tech": ["HTML", "CSS", "Chrome Extensions"],
+      "img": "/assets/logo-rgploit.webp",
+      "url": "https://github.com/spuuntries/rgploit"
+    },
+    {
       "header": "Alto Cup 5.0",
       "caption": "Video Production Technician, worked on everything relating to documentation of the event.",
       "tech": ["Sony Vegas 17"],
       "img": "/assets/logo-alto.webp",
       "url": "https://instagram.com/altocup"
+    },
+    {
+      "header": "Kekbot DISBOARD",
+      "caption": "Kekbot DISBOARD bumping reminder, with a status page.",
+      "tech": ["socket.io", "node.js", "express.js", "SQLite3"],
+      "img": "/assets/logo-kekbot.webp",
+      "url": "https://github.com/spuuntries/disbomp"
     }
   ]
 }
