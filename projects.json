@@ -18,7 +18,7 @@
       "header": "Replicate Cogs",
       "caption": "Multiple Cogs (A docker-like interface for AI inference) I maintain on Replicate.com for AI inference and rapid prototyping.",
       "tech": ["python", "LLaMa", "LLMs", "Replicate"],
-      "img": "/assets/logo-kekbot.webp",
+      "img": "/assets/logo-replicate.webp",
       "url": "https://github.com/spuuntries/rp-cogs"
     },
     {

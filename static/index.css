@@ -40,6 +40,9 @@
 #🏷️ {
   text-align: center;
   font-weight: bold;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   font-family: "Pixelify Sans", cursive;
 }
 
@@ -154,7 +157,7 @@ main {
 }
 
 #contacts > a > img {
-  width: max(30px, 3vw);
+  width: clamp(30px, 3vw, 100px);
   border-radius: 0.5vw;
   transition: width 0.25s ease-in-out;
 }
