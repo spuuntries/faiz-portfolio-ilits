@@ -3,7 +3,8 @@
   "builds": [
     { "src": "index.js", "use": "@vercel/node" },
     { "src": "static/**", "use": "@vercel/static" },
-    { "src": "assets/**", "use": "@vercel/static" }
+    { "src": "assets/**", "use": "@vercel/static" },
+    { "src": "projects.json", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
