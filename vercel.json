@@ -1,8 +1,8 @@
 {
   "version": 2,
   "rewrites": [
+    { "source": "/", "destination": "/static/index.html" },
     { "source": "/assets/(.*)", "destination": "/assets/$1" },
-    { "source": "/(.*)", "destination": "/static/$1" },
-    { "source": "/", "destination": "/static/index.html" }
+    { "source": "/(.*)", "destination": "/static/$1" }
   ]
 }
