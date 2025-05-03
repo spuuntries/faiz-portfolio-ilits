@@ -1,7 +1,7 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/assets/$1" },
-    { "source": "/(.*)", "destination": "/static/$1" }
+    { "source": "/assets/(.*)", "destination": "/assets" },
+    { "source": "/", "destination": "/static" }
   ]
 }
