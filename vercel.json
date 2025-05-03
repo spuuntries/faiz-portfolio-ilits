@@ -1,7 +1,13 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/assets" },
-    { "source": "/", "destination": "/static" }
+  "builds": [
+    { "src": "index.js", "use": "@vercel/node" },
+    { "src": "static/**", "use": "@vercel/static" },
+    { "src": "assets/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/projects", "dest": "/index.js" },
+    { "src": "/(.*)", "dest": "/static/$1" }
   ]
 }
